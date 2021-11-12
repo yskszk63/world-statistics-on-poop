@@ -1,0 +1,29 @@
+name: Collect
+
+on:
+  schedule:
+  - cron: '15 12 * * *'
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: "16"
+
+    - run: |
+        npm ci
+        npm run collect
+      env:
+        GITHUB_TOKEN: ${{ secrets.SUMMARY_TOKEN }}
+
+    - name: Git commit and push
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add data/
+        git commit -m 'Update results.'
+        git push
