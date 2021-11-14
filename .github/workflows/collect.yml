@@ -15,11 +15,10 @@ jobs:
         node-version: "16"
 
     - run: |
-        echo "$GITHUB_TOKEN" | gh auth login --with-token
         npm ci
         npm run collect
       env:
-        GITHUB_TOKEN: ${{ secrets.SUMMARY_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Git commit and push
       run: |
