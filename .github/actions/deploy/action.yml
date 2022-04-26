@@ -3,6 +3,8 @@ description: "Deploy Action"
 
 inputs:
   github_token:
+    description: "github_token"
+    required: true
 
 runs:
   using: "composite"
