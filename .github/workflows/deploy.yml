@@ -6,27 +6,9 @@ on:
       - main
   workflow_dispatch:
 
-
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-
-    - uses: actions/setup-node@v2
-      with:
-        node-version: "18"
-
-    - run: |
-        rm -rf out
-        npm ci
-        npm run build
-        npx next export
-        touch out/.nojekyll
-      env:
-        PREFIX: /world-statistics-on-poop
-
-    - uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: out
+    - uses: actions/checkout@v3
+    - uses: "./.github/actions/deploy"

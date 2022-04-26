@@ -31,7 +31,4 @@ jobs:
         git commit -m 'Update results.'
         git push
 
-    - name: Trigger deploy workflow.
-      run: gh workflow run deploy.yml
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: "./.github/actions/deploy"

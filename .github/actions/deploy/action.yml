@@ -1,0 +1,26 @@
+name: Deploy
+description: "Deploy Action"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "18"
+        cache: 'npm'
+
+    - run: |
+        rm -rf out
+        corepack enable npm
+        npm ci
+        npm run build
+        npx next export
+        touch out/.nojekyll
+      shell: bash
+      env:
+        PREFIX: /world-statistics-on-poop
+
+    - uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: out
