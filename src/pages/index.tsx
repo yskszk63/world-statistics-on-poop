@@ -51,7 +51,7 @@ const Home: NextPage<Props> = ({data}) => {
   }, [canvas, data]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles["container"]}>
       <Head>
         <title>world-statistics-on-poop</title>
         <meta name="description" content="world-statistics-on-poop" />
@@ -61,7 +61,7 @@ const Home: NextPage<Props> = ({data}) => {
         />
       </Head>
 
-      <main className={styles.main}>
+      <main className={styles["main"]}>
         <canvas ref={canvas}/>
       </main>
     </div>

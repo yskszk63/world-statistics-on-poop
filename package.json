@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@swc/core": "^1.2.171",
+    "@tsconfig/strictest": "^1.0.1",
     "@types/ndjson": "^2.0.1",
     "@types/node": "17.0.26",
     "@types/react": "18.0.6",
