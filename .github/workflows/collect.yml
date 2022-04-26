@@ -2,7 +2,7 @@ name: Collect
 
 on:
   schedule:
-  - cron: '15 12 * * *'
+    - cron: '15 12 * * *'
   workflow_dispatch:
 
 jobs:
@@ -32,3 +32,5 @@ jobs:
         git push
 
     - uses: "./.github/actions/deploy"
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
