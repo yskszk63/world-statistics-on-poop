@@ -1,7 +1,6 @@
-/** @type {import('next').NextConfig} */
 const basePath = process.env['PREFIX'] || '';
 
-module.exports = {
+export default {
   reactStrictMode: true,
-    basePath,
+  basePath,
 }
